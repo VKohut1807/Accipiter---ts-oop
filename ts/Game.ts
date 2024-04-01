@@ -1,58 +1,31 @@
+import {BackgroundCanvas} from "./BackgroundСanvas";
+import {UFO} from "./UFO";
+
 export class Game {
-  canvas: HTMLCanvasElement;
-  ctx: CanvasRenderingContext2D;
-  skybg: HTMLImageElement;
-  positionBg: number;
-  speedBg: number;
+  private backgroundCanvas: BackgroundCanvas;
+  private ufo: UFO;
 
-  constructor(positionBg = 0, speedBg = 1) {
-    this.canvas = document.getElementById("canvas") as HTMLCanvasElement;
-    const context = this.canvas.getContext("2d");
-    if (!context) {
-      throw new Error("2D Context is not supported!");
-    }
-    this.ctx = context;
-    this.skybg = new Image();
-    this.skybg.src = "img/background.jpg";
-    this.skybg.onload = () => {
-      this.init();
-    };
-    this.positionBg = positionBg;
-    this.speedBg = speedBg;
+  constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
+    this.backgroundCanvas = new BackgroundCanvas(canvas, ctx);
+    this.ufo = new UFO(canvas, ctx, "img/ufo.png", 100, 100, 1, 1, 100, 0);
   }
 
-  init(): void {
-    this.startAnimation();
+  public async init(): Promise<void> {
+    await this.backgroundCanvas.init();
+    await this.ufo.init();
   }
 
-  update(): void {}
-
-  render(): void {
-    this.backgroundRun();
+  private update(): void {
+    this.backgroundCanvas.update();
+    this.ufo.update();
   }
 
-  backgroundRun(): void {
-    this.ctx.drawImage(
-      this.skybg,
-      0,
-      this.positionBg,
-      this.canvas.width,
-      this.canvas.height
-    );
-    this.ctx.drawImage(
-      this.skybg,
-      0,
-      this.positionBg - this.canvas.height,
-      this.canvas.width,
-      this.canvas.height
-    );
-    this.positionBg += this.speedBg;
-    if (this.positionBg >= this.canvas.height) {
-      this.positionBg = 0;
-    }
+  private render(): void {
+    this.backgroundCanvas.render();
+    this.ufo.render();
   }
 
-  startAnimation(): void {
+  public runGameLoop(): void {
     const animate = () => {
       this.update();
       this.render();
@@ -61,7 +34,7 @@ export class Game {
     animate();
   }
 
-  requestAnimationFrameForAll(callback: FrameRequestCallback): void {
+  private requestAnimationFrameForAll(callback: FrameRequestCallback): void {
     window.requestAnimationFrame(callback);
   }
 }
