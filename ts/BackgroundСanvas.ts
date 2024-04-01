@@ -1,13 +1,11 @@
 export class BackgroundCanvas {
-  private canvas: HTMLCanvasElement;
-  private ctx: CanvasRenderingContext2D;
+  public canvas: HTMLCanvasElement = document.getElementById("canvas") as HTMLCanvasElement;
+  public ctx: CanvasRenderingContext2D = this.canvas.getContext("2d") as CanvasRenderingContext2D;
   private skybg: HTMLImageElement;
   private position: number;
   private speed: number;
 
-  constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
-    this.canvas = canvas;
-    this.ctx = ctx || new Error("2D Context is not supported!");
+  constructor() {
     this.skybg = new Image();
     this.position = 0;
     this.speed = 1;
@@ -26,13 +24,7 @@ export class BackgroundCanvas {
   }
 
   public render(): void {
-    this.ctx.drawImage(
-      this.skybg,
-      0,
-      this.position,
-      this.canvas.width,
-      this.canvas.height
-    );
+    this.ctx.drawImage(this.skybg, 0, this.position, this.canvas.width, this.canvas.height);
     this.ctx.drawImage(
       this.skybg,
       0,

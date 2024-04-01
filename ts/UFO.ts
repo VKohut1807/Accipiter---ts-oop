@@ -16,6 +16,7 @@ export class UFO extends BaseVehicle {
   ) {
     super(canvas, ctx, imgPath, x, y, cx, cy, size, exist);
     this.img = new Image();
+    this.size = size;
   }
 
   public async init(): Promise<void> {
@@ -29,17 +30,11 @@ export class UFO extends BaseVehicle {
     this.x += this.cx;
     this.y += this.cy;
 
-    if (
-      this.x >= this.canvas.width - this.size / 4 ||
-      this.x <= 0 + this.size / 4
-    ) {
+    if (this.x >= this.canvas.width - this.size / 4 || this.x <= 0 + this.size / 4) {
       this.cx = -this.cx;
     }
 
-    if (
-      this.y >= this.canvas.height - this.size / 4 ||
-      this.y <= 0 + this.size / 4
-    ) {
+    if (this.y >= this.canvas.height - this.size / 4 || this.y <= 0 + this.size / 4) {
       this.cy = -this.cy;
     }
   }
@@ -54,8 +49,7 @@ export class UFO extends BaseVehicle {
     );
   }
 
-  public setMovementDirection(cx: number, cy: number): void {
-    this.cx = cx;
-    this.cy = cy;
+  public getSize(): number {
+    return this.size;
   }
 }

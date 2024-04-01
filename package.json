@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "dev": "webpack --mode development --watch",
-    "build": "webpack --mode development"
+    "watch": "webpack --mode development --watch",
+    "dev": "webpack --mode development"
   },
   "devDependencies": {
     "ts-loader": "^9.5.1",

@@ -21,7 +21,7 @@ export class BaseVehicle {
     exist: number = 0
   ) {
     this.canvas = canvas;
-    this.ctx = ctx || new Error("2D Context is not supported!");
+    this.ctx = ctx;
     this.img = new Image();
     this.img.src = imgPath;
     this.x = x;

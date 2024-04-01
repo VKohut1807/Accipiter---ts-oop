@@ -1,28 +1,29 @@
 import {BackgroundCanvas} from "./BackgroundСanvas";
 import {UFO} from "./UFO";
+import getRandomNumber from "./helpers";
 
 export class Game {
   private backgroundCanvas: BackgroundCanvas;
-  private ufo: UFO;
+  private ufos: UFO[];
 
-  constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
-    this.backgroundCanvas = new BackgroundCanvas(canvas, ctx);
-    this.ufo = new UFO(canvas, ctx, "img/ufo.png", 100, 100, 1, 1, 100, 0);
+  constructor() {
+    this.backgroundCanvas = new BackgroundCanvas();
+    this.ufos = [];
   }
 
   public async init(): Promise<void> {
     await this.backgroundCanvas.init();
-    await this.ufo.init();
+    this.addUFO();
   }
 
   private update(): void {
     this.backgroundCanvas.update();
-    this.ufo.update();
+    this.ufos.forEach((ufo) => ufo.update());
   }
 
   private render(): void {
     this.backgroundCanvas.render();
-    this.ufo.render();
+    this.ufos.forEach((ufo) => ufo.render());
   }
 
   public runGameLoop(): void {
@@ -32,6 +33,23 @@ export class Game {
       this.requestAnimationFrameForAll(animate);
     };
     animate();
+    setInterval(() => {
+      this.addUFO();
+    }, 2000);
+  }
+  private addUFO(): void {
+    const canvas = this.backgroundCanvas.canvas;
+    const ctx = this.backgroundCanvas.ctx;
+    const imgPath = "img/ufo.png";
+    const size = this.ufos.length > 0 ? this.ufos[0].getSize() : 100;
+    const x = getRandomNumber(0 + size / 4, canvas.width - size / 4);
+    const y = 0 + size / 4;
+    const cx = getRandomNumber(1, 1);
+    const cy = getRandomNumber(2, 10);
+    const exist = 0;
+    const newUFO = new UFO(canvas, ctx, imgPath, x, y, cx, cy, size, exist);
+    this.ufos.push(newUFO);
+    newUFO.init();
   }
 
   private requestAnimationFrameForAll(callback: FrameRequestCallback): void {

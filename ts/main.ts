@@ -1,12 +1,10 @@
 import {Game} from "./Game";
+import {BackgroundCanvas} from "./BackgroundСanvas";
 
-const canvas: HTMLCanvasElement = document.getElementById(
-  "canvas"
-) as HTMLCanvasElement;
-const ctx = canvas.getContext("2d");
+const backgroundCanvas = new BackgroundCanvas();
 
-if (ctx) {
-  const gameInstance = new Game(canvas, ctx);
+if (backgroundCanvas.ctx instanceof CanvasRenderingContext2D) {
+  const gameInstance = new Game();
   gameInstance.init().then(() => {
     gameInstance.runGameLoop();
   });

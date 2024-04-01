@@ -2,7 +2,7 @@
 
 ### `One against the legion`
 
-#### Сurrent version - v.1.2.0
+#### Сurrent version - v.0.1.4
 
 <br>
 
@@ -13,6 +13,20 @@
 <br>
 
 ## DESCRIPTION:
+
+<br>
+
+### Version 0.1.4:
+
+- Added a moving background to create the illusion of flight.
+
+- Added UFO objects.
+
+- Added random UFO respawn.
+
+- Added random UFO movement.
+
+<br>
 
 ### Version 1.0.0:
 
@@ -70,3 +84,9 @@
 1. Clone the repository to your local computer.
 
 2. Starting the game - `open 'index.html'`.
+
+3. _Optionally_, these steps are not mandatory but only if you need to modify the project:
+
+3.1. Open the terminal and run the command `npm install`.
+
+3.2. To recompile TypeScript to JavaScript, open the terminal and run the command `npm run dev`.
