@@ -1,26 +1,17 @@
 import {BaseVehicle} from "./BaseVehicle";
+import {VehicleTypes} from "./types/object-types";
 
 export class UFO extends BaseVehicle {
   protected img: HTMLImageElement;
 
-  constructor(
-    protected canvas: HTMLCanvasElement,
-    protected ctx: CanvasRenderingContext2D,
-    private imgPath: string,
-    protected x: number,
-    protected y: number,
-    protected cx: number,
-    protected cy: number,
-    protected size: number,
-    protected exist: number
-  ) {
-    super(canvas, ctx, imgPath, x, y, cx, cy, size, exist);
+  constructor({...args}: VehicleTypes) {
+    super({...args});
     this.img = new Image();
-    this.size = size;
+    this.img.src = args.imgPath;
+    this.size = args.size;
   }
 
   public async init(): Promise<void> {
-    this.img.src = this.imgPath;
     await new Promise((resolve) => {
       this.img.onload = resolve;
     });

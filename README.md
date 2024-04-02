@@ -28,7 +28,7 @@
 
 <br>
 
-### Version 1.0.0:
+<!-- ### Version 1.0.0:
 
 - Added a moving background to create the illusion of flight.
 
@@ -77,7 +77,7 @@
 
 <br>
 
----
+--- -->
 
 ## Steps to follow
 

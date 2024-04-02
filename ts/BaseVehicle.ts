@@ -1,7 +1,8 @@
+import {VehicleTypes} from "./types/object-types";
 export class BaseVehicle {
   protected canvas: HTMLCanvasElement;
   protected ctx: CanvasRenderingContext2D;
-  protected img: HTMLImageElement;
+  protected imgPath: HTMLImageElement;
   protected x: number;
   protected y: number;
   protected cx: number;
@@ -9,32 +10,22 @@ export class BaseVehicle {
   protected size: number;
   protected exist: number;
 
-  constructor(
-    canvas: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D,
-    imgPath: string,
-    x: number,
-    y: number,
-    cx: number,
-    cy: number,
-    size: number,
-    exist: number = 0
-  ) {
-    this.canvas = canvas;
-    this.ctx = ctx;
-    this.img = new Image();
-    this.img.src = imgPath;
-    this.x = x;
-    this.y = y;
-    this.cx = cx;
-    this.cy = cy;
-    this.size = size;
-    this.exist = exist;
+  constructor({...args}: VehicleTypes) {
+    this.canvas = args.canvas;
+    this.ctx = args.ctx;
+    this.imgPath = new Image();
+    this.imgPath.src = args.imgPath;
+    this.x = args.x;
+    this.y = args.y;
+    this.cx = args.cx;
+    this.cy = args.cy;
+    this.size = args.size;
+    this.exist = args.exist;
   }
 
   protected async init(): Promise<void> {
     await new Promise((resolve) => {
-      this.img.onload = resolve;
+      this.imgPath.onload = resolve;
     });
   }
 }

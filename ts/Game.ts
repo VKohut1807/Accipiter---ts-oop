@@ -1,6 +1,7 @@
 import {BackgroundCanvas} from "./BackgroundСanvas";
 import {UFO} from "./UFO";
-import getRandomNumber from "./helpers";
+import getRandomNumber from "./helpers/getRandomNumber";
+import {VehicleTypes} from "./types/object-types";
 
 export class Game {
   private backgroundCanvas: BackgroundCanvas;
@@ -13,7 +14,7 @@ export class Game {
 
   public async init(): Promise<void> {
     await this.backgroundCanvas.init();
-    this.addUFO();
+    this.addInitialUFO();
   }
 
   private update(): void {
@@ -37,17 +38,33 @@ export class Game {
       this.addUFO();
     }, 2000);
   }
+  private addInitialUFO(): void {
+    const ufoParams = this.createUFOParams();
+    this.createAndPushUFO(ufoParams);
+  }
+
   private addUFO(): void {
-    const canvas = this.backgroundCanvas.canvas;
-    const ctx = this.backgroundCanvas.ctx;
-    const imgPath = "img/ufo.png";
+    const ufoParams = this.createUFOParams();
+    this.createAndPushUFO(ufoParams);
+  }
+
+  private createUFOParams(): VehicleTypes {
     const size = this.ufos.length > 0 ? this.ufos[0].getSize() : 100;
-    const x = getRandomNumber(0 + size / 4, canvas.width - size / 4);
-    const y = 0 + size / 4;
-    const cx = getRandomNumber(1, 1);
-    const cy = getRandomNumber(2, 10);
-    const exist = 0;
-    const newUFO = new UFO(canvas, ctx, imgPath, x, y, cx, cy, size, exist);
+    return {
+      canvas: this.backgroundCanvas.canvas,
+      ctx: this.backgroundCanvas.ctx,
+      imgPath: "img/ufo.png",
+      x: getRandomNumber(0 + size / 4, this.backgroundCanvas.canvas.width - size / 4),
+      y: 0 + size / 4,
+      cx: getRandomNumber(1, 1),
+      cy: getRandomNumber(2, 10),
+      size: size,
+      exist: 0,
+    };
+  }
+
+  private createAndPushUFO(ufoParams: VehicleTypes): void {
+    const newUFO = new UFO(ufoParams);
     this.ufos.push(newUFO);
     newUFO.init();
   }
