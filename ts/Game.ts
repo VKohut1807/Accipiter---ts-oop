@@ -1,7 +1,7 @@
 import {BackgroundCanvas} from "./BackgroundСanvas";
 import {UFO} from "./UFO";
 import getRandomNumber from "./helpers/getRandomNumber";
-import {VehicleTypes} from "./types/object-types";
+import {VehicleTypes} from "./types/vehicle-types";
 
 export class Game {
   private backgroundCanvas: BackgroundCanvas;

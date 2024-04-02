@@ -1,5 +1,5 @@
 import {BaseVehicle} from "./BaseVehicle";
-import {VehicleTypes} from "./types/object-types";
+import {VehicleTypes} from "./types/vehicle-types";
 
 export class UFO extends BaseVehicle {
   protected img: HTMLImageElement;

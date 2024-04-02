@@ -1,4 +1,4 @@
-import {VehicleTypes} from "./types/object-types";
+import {VehicleTypes} from "./types/vehicle-types";
 export class BaseVehicle {
   protected canvas: HTMLCanvasElement;
   protected ctx: CanvasRenderingContext2D;
