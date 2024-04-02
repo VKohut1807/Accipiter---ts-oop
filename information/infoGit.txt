@@ -1,0 +1,7 @@
+feat: for new features.
+fix: for bug fixes.
+docs: for documentation changes.
+style: for changes in code formatting.
+refactor: for code refactoring without functional changes.
+test: for adding or modifying tests.
+chore: for routine or insignificant changes.
