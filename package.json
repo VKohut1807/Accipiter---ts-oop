@@ -1,4 +1,6 @@
 {
+  "name": "game_accipiter",
+  "version": "0.1.6",
   "scripts": {
     "watch": "webpack --mode development --watch",
     "dev": "webpack --mode development"

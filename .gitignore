@@ -1,5 +1,6 @@
 # local files
 desktop.ini
+package-lock.json
 
 # Ignore dependencies
 node_modules/

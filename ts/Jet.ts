@@ -1,7 +1,7 @@
 import BaseVehicle from "./BaseVehicle";
 import {VehicleTypes} from "./types/vehicle-types";
 
-export default class UFO extends BaseVehicle {
+export default class Jet extends BaseVehicle {
   protected img: HTMLImageElement;
 
   constructor({...args}: VehicleTypes) {
@@ -17,22 +17,11 @@ export default class UFO extends BaseVehicle {
     });
   }
 
-  public update(): void {
-    this.x += this.cx;
-    this.y += this.cy;
-
-    if (this.x >= this.canvas.width - this.size / 4 || this.x <= 0 + this.size / 4) {
-      this.cx = -this.cx;
-    }
-
-    if (this.y >= this.canvas.height - this.size / 4 || this.y <= 0 + this.size / 4) {
-      this.cy = -this.cy;
-    }
-  }
+  public update(): void {}
 
   public render(): void {
     this.ctx.drawImage(
-      this.img,
+      this.imgPath,
       this.x - this.size / 2,
       this.y - this.size / 2,
       this.size,

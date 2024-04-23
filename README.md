@@ -2,7 +2,7 @@
 
 ### `One against the legion`
 
-#### Сurrent version - v.0.1.4
+#### Сurrent version - v.0.1.6
 
 <br>
 
@@ -28,56 +28,17 @@
 
 <br>
 
-<!-- ### Version 1.0.0:
-
-- Added a moving background to create the illusion of flight.
+### Version 0.1.6:
 
 - Added jet fighter.
 
 - Added movement of the jet fighter with the mouse.
 
-- Added fire animation from jet engines.
-
-- Added jet missiles.
-
-- Added launch of missiles from a jet fighter.
-
-- Added UFO objects.
-
-- Added random UFO respawn.
-
-- Added random UFO movement.
-
-- Added the collision of a rocket with a UFO with the subsequent removal of these objects.
-
-<br>
-
-### Version 1.1.0:
-
 - Added jet fighter and UFO collision.
-
-- Added an explosion animation when a jet fighter missile collides with a UFO.
 
 - Added an explosion animation when a jet fighter collides with a UFO.
 
-- Added Game Over window.
-
 <br>
-
-### Version 1.2.0:
-
-- Added energy shield animation for UFO objects.
-
-- Added rotation of energy shield animation.
-
-- Added the destroyed objects counter.
-
-- Added display of data on the number of destroyed enemies and also display of the record for
-  number of destroyed enemies in the Game over window
-
-<br>
-
---- -->
 
 ## Steps to follow
 

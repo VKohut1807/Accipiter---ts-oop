@@ -1,4 +1,4 @@
-export class BackgroundCanvas {
+export default class BackgroundCanvas {
   public canvas: HTMLCanvasElement = document.getElementById("canvas") as HTMLCanvasElement;
   public ctx: CanvasRenderingContext2D = this.canvas.getContext("2d") as CanvasRenderingContext2D;
   private skybg: HTMLImageElement = new Image();
@@ -8,8 +8,12 @@ export class BackgroundCanvas {
   constructor() {}
 
   public async init(): Promise<void> {
-    this.skybg.src = "img/background.jpg";
-    await this.skybg.onload;
+    return new Promise<void>((resolve) => {
+      this.skybg.onload = () => {
+        resolve();
+      };
+      this.skybg.src = "img/background.jpg";
+    });
   }
 
   public update(): void {
@@ -28,5 +32,9 @@ export class BackgroundCanvas {
       this.canvas.width,
       this.canvas.height
     );
+  }
+
+  public clear(): void {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 }
